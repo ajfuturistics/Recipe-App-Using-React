@@ -1,5 +1,7 @@
 import style from './Recipe.module.css';
-const Recipe = ({title, calories, image, ingredients, cuisineType}) => {
+import uuid from 'react-uuid';
+
+const Recipe = ({ title, calories, image, ingredients, cuisineType, source}) => {
 
     return (
         <div className={style.recipe}>
@@ -10,9 +12,10 @@ const Recipe = ({title, calories, image, ingredients, cuisineType}) => {
             <ul className={style.listitems}>
             <h3>Ingredients Required:</h3>
                 {ingredients.map(ingredient =>(
-                    <li>{ingredient.text}</li>
+                    <li key={uuid()}>{ingredient.text}</li>
                 ))}
             </ul>
+            <h3>Source: {source}</h3>
         </div>
     );
 }
